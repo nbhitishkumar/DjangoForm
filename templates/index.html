@@ -1,0 +1,179 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- first load django static tag. -->
+    {% load static %}
+       
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+</head>
+
+<body>
+
+   <!--wrapper start-->
+   <div class="wrapper">
+      <!--header menu start-->
+      <div class="header">
+          <div class="header-menu">
+              <img src="{% static 'images/Capture.PNG'%}">
+              <!-- <ul>
+                  <li><a href="#"><i class="fas fa-bell"></i></a></li>
+              </ul> -->
+              <div class="dropdown">
+                  <h3>
+                      <span>Philips</span>
+                      <i class="fa fa-angle-up"></i>
+                  </h3>
+                  <div class="dropdown-content">
+                        <p>My Account</p>
+                        <a href="#">Profile & Security</a>
+                        <a href="#">Payment Options</a>
+                        <a href="#">Addresses</a>
+                        <a href="#">Settings</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      <!--header menu end-->
+      <!--sidebar start-->
+      <div class="sidebar">
+          <div class="sidebar-menu">
+              <li class="item">
+                  <a href="#" class="menu-btn">
+                      <i class="fas fa-desktop"></i><span>Dashboard</span>
+                  </a>
+                  <a href="#" class="menu-btn">
+                      <i class="fas fa-desktop"></i><span>Revenues</span>
+                  </a>
+                  <a href="#" class="menu-btn">
+                    <i class="fas fa-shopping-cart"></i><span>Orders</span>
+                  </a>
+                  <a href="#" class="menu-btn">
+                      <i class="fas fa-desktop"></i><span>Contracts</span>
+                  </a>
+                  <a href="#" class="menu-btn">
+                      <i class="fas fa-desktop"></i><span>Invoices</span>
+                  </a>
+                  <a href="#" class="menu-btn">
+                      <i class="fas fa-desktop"></i><span>Customer Support</span>
+                  </a>
+                  <a href="#" class="menu-btn">
+                      <i class="fas fa-desktop"></i><span>Reviews</span>
+                  </a>
+                  <a href="#" class="menu-btn">
+                      <i class="fas fa-bullhorn"></i><span>Ad Management</span>
+                  </a>
+                  <a href="#" class="menu-btn">
+                      <i class="fas fa-server"></i><span>Service Catalogue</span>
+                  </a>
+              </li>
+          </div>
+      </div>
+      <!--sidebar end-->
+      <!--main container start-->
+      <div class="main-container">
+          <div class="card">
+              <h3>Revenues</h3>
+              <div class="boxed">
+                  <div class="box_txt">
+                      <h1>Statement</h1>
+                      <div class="total_earning">
+                          <h3>Total Earning</h3>
+                          <p>USD 75,000</p>
+                      </div>
+                  </div>
+              </div>
+              <span></span>
+              <div class="boxed">
+                  <h1>Settlement</h1>
+                  <div class="total_earning">
+                      <h3>Remaining Settlement</h3>
+                      <p>USD 20,000</p>
+                  </div>
+              </div>
+          </div>
+          <div class="transaction">
+            <span>My Transactions</span>
+            <a href="#"><i class="fas fa-download"></i>Export</a>
+            <a href="#"><i class="fas fa-filter"></i> Filter</a>
+            
+            <table>
+                <tr>
+                  <th>Date of Transaction</th>
+                  <th>Transaction ID</th>
+                <th>Amount</th>
+                <th>Transaction Type</th>
+                <th>Actions</th>
+                </tr>
+                {% for item in obj %}
+                <tr> 
+                    <td>{{ item.date_of_transaction }}</td>
+                    <td>{{ item.transaction_id }}</td>
+                    <td>${{ item.amount }}</td>
+                    <td>{{ item.transaction_type }}</td>
+                    <td><a href="#"><i class="fas fa-eye"></i><i class="fas fa-download"></i></a></td>
+               </tr>
+               {% endfor %}
+            </table>
+                <!-- {% if obj.has_other_pages %}
+                    <div class="pagination">
+                        {% if obj.has_next %}
+                            <a href="?page={{ obj.next_page_number }}">&raquo;</a>
+                        {% else %}
+                            <a class="disabled">&raquo;</a>
+                        {% endif %}
+                        {% for i in obj.paginator.page_range %}
+                            {% if obj.number == i %}
+                                <a class="active">{{ i }}</a>
+                                
+                            {% else %}
+                                <a href="?page={{ i }}">{{ i }}</a>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        <!-- {% if obj.has_previous %}
+                            <a href="?page={{ obj.previous_page_number }}">&laquo;</a></li>
+                        {% else %}
+                            <a class="disabled">&laquo;</a>
+                        {% endif %} -->
+                    </div>
+                <!-- {% endif %} --> 
+
+
+                    
+          </div>
+      </div>
+      <!--main container end-->
+  </div>
+  <!--wrapper end-->
+
+  <!-- footer -->
+
+  <div class="footer">
+      <!-- <div class="logo">
+        <img src="{% static 'images/Capture.PNG'%}">
+      </div> -->
+      <div class="social">
+          <a href="#"><span></span></a>
+          <!-- <img src="{% static 'images/Capture.PNG'%}"> -->
+          <a href="#" class="fa fa-facebook"></a>
+          <a href="#" class="fa fa-twitter"></a>
+          <a href="#" class="fa fa-linkedin"></a>
+          <a href="#" class="fa fa-youtube"></a>
+          <a href="#" class="fa fa-instagram"></a>
+      </div>
+      <div class="copy"><span>@Covalensedigital 2020 All Rights Reserved</span></div>
+      
+  </div>
+   
+</body>
+
+</html>
